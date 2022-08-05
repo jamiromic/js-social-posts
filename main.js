@@ -114,9 +114,27 @@ for (let i = 0; i < posts.length; i++) {
 
     elementPostMetaIcon.append(elementImg);
 
+    // INSERISCO PROPRIETà OGGETTO DENTRO SRC IMG
+
     elementImg.src = element.author.image;
 
-    
+    // CREO ELEMENTO POSTMETADATA E LO PUSHO NEL SUO CONTAINER
+
+    const elementPostMetaData = document.createElement('div');
+
+    elementPostMetaData.className = 'post-meta__data';
+
+    elementPostMeta.append(elementPostMetaData);
+
+    // CREO ELEMENTO POSTMETA AUTHOR E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostMetaAuthor = document.createElement('div');
+
+    elementPostMetaAuthor.className = 'post-meta__author';
+
+    elementPostMetaData.append(elementPostMetaAuthor);
+
+    elementPostMetaAuthor.innerHTML = element.author.name;
 
 
 
