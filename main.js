@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=40"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -60,7 +60,79 @@ const posts = [
 
 elementContainer = document.querySelector('.posts-list');
 
-const elementPost = document.createElement('div');
 
-elementPost.className('post');
+
+
+
+
+
+
+// CICLO PROPRIETA' OGGETTI E LI INSERISCO NEL DOM
+
+for (let i = 0; i < posts.length; i++) {
+
+    const element = posts[i];
+
+
+    // CREO ELEMENTO POST E LO PUSHO SUL CONTAINER
+
+    const elementPost = document.createElement('div');
+
+    elementPost.className = 'post';
+
+    elementContainer.append(elementPost);
+
+    // CREO ELEMENTO POSTHEADER E LO PUSHO NEL SUO CONTAINER
+
+    const elementPostHeader = document.createElement('div');
+
+    elementPostHeader.className = 'post__header';
+
+    elementPost.append(elementPostHeader);
+
+    // CREO ELEMENTO POSTMETA E LO PUSHO NEL SUO CONTAINER
+
+    const elementPostMeta = document.createElement('div');
+
+    elementPostMeta.className = 'post-meta';
+
+    elementPostHeader.append(elementPostMeta);
+
+    // CREO ELEMENTO POSTMETAICON E LO PUSHO NEL SUO CONTAINER
+
+    const elementPostMetaIcon = document.createElement('div');
+
+    elementPostMetaIcon.className = 'post-meta__icon';
+
+    elementPostMeta.append(elementPostMetaIcon);
+
+    // CREO ELEMENTO POSTMETAICON E LO PUSHO NEL SUO CONTAINER
+
+    const elementImg = document.createElement('img');
+
+    elementImg.className = 'profile-pic';
+
+    elementPostMetaIcon.append(elementImg);
+
+    elementImg.src = element.author.image;
+
+    
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
