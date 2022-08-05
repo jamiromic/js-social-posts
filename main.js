@@ -114,7 +114,7 @@ for (let i = 0; i < posts.length; i++) {
 
     elementPostMetaIcon.append(elementImg);
 
-    // INSERISCO PROPRIETà OGGETTO DENTRO SRC IMG
+    // INSERISCO PROPRIETA' OGGETTO DENTRO SRC IMG
 
     elementImg.src = element.author.image;
 
@@ -134,7 +134,23 @@ for (let i = 0; i < posts.length; i++) {
 
     elementPostMetaData.append(elementPostMetaAuthor);
 
+    // INSERISCO PROPRIETA' OGGETTO NOME AUTORE
+
     elementPostMetaAuthor.innerHTML = element.author.name;
+
+    // CREO ELEMENTO POSTMETA TIME E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostMetaTime = document.createElement('div');
+
+    elementPostMetaTime.className = 'post-meta__time';
+
+    elementPostMetaData.append(elementPostMetaTime);
+
+    // INSERISCO PROPRIETA' OGGETTO TIME
+
+    elementPostMetaTime.innerHTML = element.created;
+
+
 
 
 
