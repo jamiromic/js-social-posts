@@ -56,13 +56,16 @@ const posts = [
     }
 ];
 
+
+// SECONDO ARRAY IN CUI SALVEREMO GLI ID DEI LINK IN CUI ABBIAMO MESSO IL LIKE
+
+const IdLiked = [];
+
+
+
 // RECUPERO ELEMENTO CONTAINER DAL DOM
 
 elementContainer = document.querySelector('.posts-list');
-
-
-
-
 
 
 
@@ -150,14 +153,165 @@ for (let i = 0; i < posts.length; i++) {
 
     elementPostMetaTime.innerHTML = element.created;
 
+    // CREO ELEMENTO POST TEXT E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostText = document.createElement('div');
+
+    elementPostText.className = 'post__text';
+
+    elementPost.append(elementPostText);
+
+    // INSERISCO PROPRIETA' OGGETTO TEXT
+
+    elementPostText.innerHTML = element.content;
 
 
+
+    // CREO ELEMENTO POST IMAGE E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostImage = document.createElement('div');
+
+    elementPostImage.className = 'post__image';
+
+    elementPost.append(elementPostImage);
+
+   
+
+    // CREO ELEMENTO POST IMAGE E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostImg = document.createElement('img');
+
+    elementPostImage.append(elementPostImg);
+
+    // INSERISCO PROPRIETA' OGGETTO TEXT
+
+    elementPostImg.src = element.media;
+
+
+    // CREO ELEMENTO POST FOOTER E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostFooter = document.createElement('div');
+
+    elementPostFooter.className = 'post__footer';
+
+    elementPost.append(elementPostFooter);
+
+
+    // CREO ELEMENTO POST FOOTER LIKES E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostFooterlikes = document.createElement('div');
+
+    elementPostFooterlikes.className = 'likes js-likes';
+
+    elementPostFooter.append(elementPostFooterlikes);
+
+
+    // CREO ELEMENTO POST FOOTER LIKES CTA E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostFooterlikesCta = document.createElement('div');
+
+    elementPostFooterlikesCta.className = 'likes__cta';
+
+    elementPostFooterlikes.append(elementPostFooterlikesCta);
+
+
+    // CREO ELEMENTO POST A E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostA = document.createElement('a');
+
+    elementPostA.className = 'like-button  js-like-button';
+
+    elementPostA.href = '#';
+
+    elementPostA.data = element.id;
+
+    elementPostFooterlikesCta.append(elementPostA);
+
+    
+
+    // CREO ELEMENTO ICONA FOOTER LIKES E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostFooterIcon = document.createElement('i');
+
+    elementPostFooterIcon.className = 'like-button__icon fas fa-thumbs-up';
+
+    elementPostFooterIcon.ariaHidden = true;
+
+    elementPostA.append(elementPostFooterIcon);
+
+
+    // CREO ELEMENTO POST FOOTER LIKES SPAN E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostFooterlikesSpan = document.createElement('span');
+
+    elementPostFooterlikesSpan.className = 'like-button__label';
+
+    elementPostFooterlikesSpan.innerHTML = "Mi Piace";
+
+    elementPostA.append(elementPostFooterlikesSpan);
+
+    
+    
+    // CREO ELEMENTO POST LIKES COUNTER E LO PUSHO NEL SUO CONTAINER
+
+    let elementPostLikesCounter = document.createElement('div');
+
+    elementPostLikesCounter.className = 'likes__counter';
+
+    elementPostFooterlikes.append(elementPostLikesCounter);
+
+    
+
+    // CREO ELEMENTO BOTTONE E LO PUSHO NEL SUO CONTENITORE
+
+    let elementButtonLikes = document.createElement('b')
+
+    elementButtonLikes.className = 'js-likes-counter'
+
+    elementButtonLikes.id = element.id;
+
+    elementPostLikesCounter.append(elementButtonLikes);
+
+    elementButtonLikes.innerHTML = "Piace a " + element.likes + " persone";
+
+
+
+    // INSERISCO EVENT LISTENER SUL BOTTONE
+
+    elementPostA.addEventListener('click', function() {
+
+        // DICO AL BOTTONE DI CAMBIARE COLORE AL CLICK
+        elementPostA.classList.add('like-button--liked');
+
+        // CREO VARIABILE CON VALORE INCREMENTATO
+        elementLikesIncr = element.likes+1;
+
+        // INSERISCO NEL CONTATORE DI LIKES IL VALORE INCREMENTATO
+        elementButtonLikes.innerHTML = "Piace a " + elementLikesIncr + " persone";
+
+        
+        // PUSHO IL VALORE DEGLI ID LIKED NELL'ARRAY
+        IdLiked.push(element.id);
+        
+        // STAMPO L'ARRAY IN MODO DA VEDERNE L'INCREMENTO
+        console.log(IdLiked);
+    
+    });
 
 
 
 
 }
 
+
+
+
+
+
+
+   
+
+    
 
 
 
