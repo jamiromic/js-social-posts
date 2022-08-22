@@ -276,9 +276,13 @@ for (let i = 0; i < posts.length; i++) {
 
 
 
-    // INSERISCO EVENT LISTENER SUL BOTTONE
+    // INSERISCO EVENT LISTENER SUL BOTTONE - INSERISCO L'ARGOMENTO EVENT PER TOGLIERE DOPO PROPRIETA' DI DEFAULT AD A-LINK
 
-    elementPostA.addEventListener('click', function() {
+    elementPostA.addEventListener('click', function(event) {
+
+        
+        // TOLGO PROPRIETA' DI DEFAULT A TAG A, PER EVITARE CHE AL CLICK DEL BUTTONS TORNI CON LA PAGINA SU
+        event.preventDefault();
 
         // DICO AL BOTTONE DI CAMBIARE COLORE AL CLICK
         elementPostA.classList.add('like-button--liked');
