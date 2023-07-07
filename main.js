@@ -37,7 +37,7 @@ const posts = [
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
-            "name": "Luca Formicola",
+            "name": "Luca Pirola",
             "image": "https://unsplash.it/300/300?image=40"
         },
         "likes": 56,
@@ -48,7 +48,7 @@ const posts = [
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
         "media": "https://unsplash.it/600/400?image=534",
         "author": {
-            "name": "Alessandro Sainato",
+            "name": "Carlo Petri",
             "image": "https://unsplash.it/300/300?image=29"
         },
         "likes": 95,
@@ -279,28 +279,37 @@ for (let i = 0; i < posts.length; i++) {
     // INSERISCO EVENT LISTENER SUL BOTTONE - INSERISCO L'ARGOMENTO EVENT PER TOGLIERE DOPO PROPRIETA' DI DEFAULT AD A-LINK
 
     elementPostA.addEventListener('click', function(event) {
+  event.preventDefault();
 
-        
-        // TOLGO PROPRIETA' DI DEFAULT A TAG A, PER EVITARE CHE AL CLICK DEL BUTTONS TORNI CON LA PAGINA SU
-        event.preventDefault();
+  // Verifica se il pulsante è già stato cliccato
+  if (elementPostA.classList.contains('like-button--liked')) {
+    // Rimuovi il colore di "mi piace" e decrementa il numero di like
+    elementPostA.classList.remove('like-button--liked');
+    elementLikesIncr = element.likes - 1;
+  } else {
+    // Aggiungi il colore di "mi piace" e incrementa il numero di like
+    elementPostA.classList.add('like-button--liked');
+    elementLikesIncr = element.likes + 1;
+  }
 
-        // DICO AL BOTTONE DI CAMBIARE COLORE AL CLICK
-        elementPostA.classList.add('like-button--liked');
+  // Aggiorna il conteggio dei like nel bottone
+  elementButtonLikes.innerHTML = "Piace a " + elementLikesIncr + " persone";
 
-        // CREO VARIABILE CON VALORE INCREMENTATO
-        elementLikesIncr = element.likes+1;
+  // Aggiorna il numero di like nell'elemento (potrebbe essere necessario aggiornare l'oggetto element con il nuovo valore)
+  element.likes = elementLikesIncr;
 
-        // INSERISCO NEL CONTATORE DI LIKES IL VALORE INCREMENTATO
-        elementButtonLikes.innerHTML = "Piace a " + elementLikesIncr + " persone";
+  // Puoi gestire l'array degli ID liked come preferisci, ad esempio, rimuovendo o aggiungendo l'ID corrente
+  if (IdLiked.includes(element.id)) {
+    // Rimuovi l'ID dall'array
+    IdLiked.splice(IdLiked.indexOf(element.id), 1);
+  } else {
+    // Aggiungi l'ID all'array
+    IdLiked.push(element.id);
+  }
 
-        
-        // PUSHO IL VALORE DEGLI ID LIKED NELL'ARRAY
-        IdLiked.push(element.id);
-        
-        // STAMPO L'ARRAY IN MODO DA VEDERNE L'INCREMENTO
-        console.log(IdLiked);
-    
-    });
+  console.log(IdLiked);
+});
+
 
 
 
